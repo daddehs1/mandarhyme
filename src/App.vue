@@ -1,5 +1,11 @@
 <template>
 <div id="app" :class="classObject">
+  <div class="main-wrapper">
+    <router-view/>
+  </div>
+  <div class="foot-bar">
+    <span class="foot-bar__text">Made by <span class="foot-bar__name">@daddehs1</span></span>
+  </div>
   <div class="header-bar">
     <div class="header-bar__logo-box">
       <Logo/>
@@ -22,13 +28,6 @@
     <mq-layout :mq="['tablet', 'mobile']">
       <small-nav/>
     </mq-layout>
-
-  </div>
-  <div class="main-wrapper">
-    <router-view/>
-  </div>
-  <div class="foot-bar">
-    <span class="foot-bar__text">Made by <span class="foot-bar__name">@daddehs1</span></span>
   </div>
 </div>
 </template>

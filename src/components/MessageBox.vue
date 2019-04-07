@@ -90,7 +90,9 @@ export default {
         height: 0;
         top: 0;
         left: 0;
-        z-index: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        z-index: 1000;
         background-color: rgba($colorGrey, .4);
         overflow: hidden;
         opacity: 0;
@@ -105,7 +107,9 @@ export default {
         left: 5vw;
         padding: 2rem;
         text-align: center;
-        z-index: 2;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        z-index: 2000;
         border: 0 solid $colorDarkBlue;
         opacity: 0;
         background-color: $colorWhite;

@@ -4,7 +4,7 @@
     <h3 class="search-results__title">
       Words Rhyming with
       <span class="search-results__characters">{{this.$route.query.q}}</span>
-      <span class="search-results__match-tone-message" v-if="this.$route.query.t"> (matching tones)</span>
+      <div class="search-results__match-tone-message" v-if="this.$route.query.t"> (matching tones)</div>
     </h3>
     <router-link class="search-results__reset" :to="{ name: 'home'}"><span>search again</span></router-link>
   </div>
@@ -87,7 +87,7 @@ export default {
   created() {
     var searchQuery = this.$route.query.q;
     var matchTones = this.$route.query.t;
-    axios.get('http://127.0.0.1:4000/api/search', {
+    axios.get('http://mandarhyme-api.herokuapp.com/api/search', {
       params: {
         q: searchQuery,
         t: matchTones

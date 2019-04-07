@@ -1,4 +1,45 @@
+.u-message-box-lock {
+
+  .header-bar {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    height: 100vh;
+    overflow: visible;
+
+    &__logo-box{
+      opacity: 0;
+    }
+
+    &__title {
+      opacity: 0;
+    }
+  }
+
+  .small-nav {
+    &__nav-wrapper{
+      overflow: visible;
+    }
+  }
+
+  .main-wrapper{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .foot-bar {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+
 .header-bar {
+
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  overflow: visible;
 
   .mq-mobile & {
     box-shadow: none;
@@ -58,6 +99,8 @@
 }
 
 .main-wrapper {
+  margin-top: 12vh;
+  z-index: -1;
   height: 83vh;
   //overflow: scroll;
 }

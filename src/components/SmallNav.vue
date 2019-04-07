@@ -49,7 +49,7 @@ export default {
         right: 1rem;
         color: $colorDarkOrange;
         transition: transform 0.5s ease;
-        z-index: 2;
+        z-index: 999;
     }
 
     &__nav-wrapper {
