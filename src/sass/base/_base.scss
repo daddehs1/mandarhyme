@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* UNIVERSAL */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  background-color: $colorWhite;
+}
+
+html {
+  /* common to make 1rem = 10px to make calculations easy
+     uses 62.5% to get 10px from browser default of 16px
+     for accessibillty purposes
+     This defines what one rem is
+  */
+  font-size: 62.5%;
+}
+
+body {
+  /* makes margin and padding not added to element height/width */
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
