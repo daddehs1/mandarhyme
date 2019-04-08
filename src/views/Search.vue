@@ -87,7 +87,7 @@ export default {
   created() {
     var searchQuery = this.$route.query.q;
     var matchTones = this.$route.query.t;
-    axios.get('http://mandarhyme-api.herokuapp.com/api/search', {
+    axios.get('https://mandarhyme-api.herokuapp.com/api/search', {
       params: {
         q: searchQuery,
         t: matchTones
