@@ -43,6 +43,11 @@ export default {
 
 <style lang="scss">
 .small-nav {
+
+    .u-message-box-lock &__icon {
+        display: none;
+    }
+
     &__icon {
         position: fixed;
         top: 1rem;
@@ -55,7 +60,7 @@ export default {
     &__nav-wrapper {
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         width: 0;
         display: flex;
         justify-content: space-evenly;
@@ -63,7 +68,7 @@ export default {
         overflow: hidden;
         z-index: 1;
         transition: width 0.5s ease;
-        height: calc(12vh - 3px);
+        height: calc(#{$headerHeight} - 3px);
     }
 
     $this: &;

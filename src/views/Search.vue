@@ -6,7 +6,9 @@
       <span class="search-results__characters">{{this.$route.query.q}}</span>
       <div class="search-results__match-tone-message" v-if="this.$route.query.t"> (matching tones)</div>
     </h3>
-    <router-link class="search-results__reset" :to="{ name: 'home'}"><span>search again</span></router-link>
+    <mq-layout mq="laptop+">
+      <router-link class="search-results__reset" :to="{ name: 'home'}"><span>search again</span></router-link>
+    </mq-layout>
   </div>
   <ul @scroll="updateScrollRemaining" ref="rhymeList" class="rhyme-list">
     <li v-for="rhyme in this.sortedRhymeList" class="rhyme-list__item">
@@ -15,7 +17,9 @@
       <span class="rhyme-list__definition"> {{parseDefinitions(rhyme.definitions)}}</span>
     </li>
   </ul>
-  <span class="search-results__scroll-remaining" :class="scrollRemainingClassObject">…</span>
+  <mq-layout mq="laptop+">
+    <span class="search-results__scroll-remaining" :class="scrollRemainingClassObject">…</span>
+  </mq-layout>
 </div>
 </template>
 
@@ -119,7 +123,7 @@ export default {
     height: 100%;
 
     &__heading {
-        margin-bottom: 1rem;
+        //margin-bottom: 1rem;
         text-align: center;
     }
 
@@ -163,7 +167,8 @@ export default {
     border-bottom: 1px solid $colorDarkBlue;
     margin: 1rem 1rem 1rem 2.5%;
     flex: 1 1 auto;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     min-height: 0;
     width: 95%;
     // scroll-snap-type: y proximity;
@@ -172,12 +177,15 @@ export default {
     &__item {
         //scroll-snap-align: end;
         list-style: none;
-        border-bottom: 1px dashed $colorDarkBlue;
         display: grid;
         padding: 1rem;
         grid-template-areas: "word pronunciation" "word definitions";
         grid-template-columns: max-content auto;
         align-items: center;
+
+        &:not(:last-of-type) {
+            border-bottom: 1px dashed $colorDarkBlue;
+        }
     }
 
     &__word {

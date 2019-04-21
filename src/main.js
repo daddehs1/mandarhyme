@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueMq from 'vue-mq'
 
+const innerHeight = require('ios-inner-height');
+Object.defineProperty(Vue.prototype, '$innerHeight', {
+  value: innerHeight
+});
+
 import router from './router'
 import store from './store'
 

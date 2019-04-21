@@ -93,7 +93,7 @@ export default {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         z-index: 1000;
-        background-color: rgba($colorGrey, .4);
+        background-color: $colorLightGrey;
         overflow: hidden;
         opacity: 0;
         transition: height 0s 0.2s, width 0s 0.2s, opacity 0.2s;
@@ -129,6 +129,7 @@ export default {
         color: $colorBlack;
         font-size: 1.4rem;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         height: 100%;
     }
 
@@ -143,15 +144,15 @@ export default {
     &--active {
         #{$mb} {
             &__wrapper {
-                height: 100vh;
-                width: 100vw;
+                height: 100%;
+                width: 100%;
                 opacity: 100;
-                transition: opacity 0.2s;
+                transition: opacity 0s;
             }
 
             &__contents {
-                height: 90vh;
-                width: 90vw;
+                height: 90%;
+                width: 90%;
                 top: 5vh;
                 left: 5vw;
                 border: 2px solid $colorDarkBlue;
