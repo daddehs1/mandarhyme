@@ -66,6 +66,7 @@ export default {
       return this.rhymeData ? this.rhymeData.rhymes : []
     },
     sortedRhymeList() {
+      console.log("Here i here i sort")
       var alphabetSort = (a, b) => {
         // removes diacritic to find true alphabetic order by pinyin
         // NDF decomposes graphemes, e.g. 'è'' turns into 'e  ̀'
@@ -79,10 +80,16 @@ export default {
         return 0;
       }
       var frequencySort = (a, b) => {
-        if (a.averageFrequency < b.averageFrequency) return -1
-        if (a.averageFrequency > b.averageFrequency) return 1;
-        return 0;
+        if (a.averageFrequency == null && b.averageFrequency == null) return 0
+        if (b.averageFrequency == null) return -1
+        if (a.averageFrequency == null) return 1
+        return a.averageFrequency - b.averageFrequency;
       }
+      // var frequencySort = (a, b) => {
+      //   if (b.averageFrequency == null || a.averageFrequency < b.averageFrequency) return -1
+      //   if (a.averageFrequency == null || a.averageFrequency > b.averageFrequency) return 1;
+      //   return 0;
+      // }
       var sortFunction = this.settings.defaultSortOrder ? alphabetSort : frequencySort;
       return this.rhymeList.sort(sortFunction);
     }
