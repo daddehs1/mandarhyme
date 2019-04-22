@@ -4,6 +4,7 @@
     <plus-circle-icon/>
   </div>
   <div class="small-nav__nav-wrapper">
+    <div class="small-nav__background"></div>
     <nav-bar/>
   </div>
 </div>
@@ -54,21 +55,30 @@ export default {
         right: 1rem;
         color: $colorDarkOrange;
         transition: transform 0.5s ease;
-        z-index: 999;
+        z-index: 2;
     }
 
+    &__background,
     &__nav-wrapper {
         position: fixed;
         top: 0;
         left: 0;
         width: 0;
+        background-color: $colorWhite;
+        height: calc(#{$headerHeight} - 3px);
+    }
+
+    &__background {
+        transition: width 0.2s ease;
+        z-index: -1;
+    }
+
+    &__nav-wrapper {
         display: flex;
         justify-content: space-evenly;
-        background-color: $colorWhite;
         overflow: hidden;
         z-index: 1;
         transition: width 0.5s ease;
-        height: calc(#{$headerHeight} - 3px);
     }
 
     $this: &;
@@ -79,6 +89,11 @@ export default {
                 transform-origin: center;
             }
 
+            &__background {
+                transition: width 0.2s ease 0.3s;
+            }
+
+            &__background,
             &__nav-wrapper {
                 width: 100%;
             }

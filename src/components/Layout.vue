@@ -7,11 +7,18 @@
   </div>
 
   <!-- FOOTER -->
-  <mq-layout mq="laptop+">
-    <div class="foot-bar">
-      <span class="foot-bar__text">Made by <span class="foot-bar__name">@daddehs1</span></span>
-    </div>
-  </mq-layout>
+  <!-- if home page, will always display footer
+  else display only if large screen -->
+  <template v-if="footerEnabled">
+    <foot-bar/>
+  </template>
+
+  <template v-else>
+    <mq-layout mq="laptop+">
+      <foot-bar/>
+    </mq-layout>
+  </template>
+
 
   <!-- HEADER -->
   <div class="header-bar">
@@ -36,11 +43,13 @@
     <mq-layout :mq="['tablet', 'mobile']">
       <small-nav/>
     </mq-layout>
+
   </div>
 </div>
 </template>
 
 <script>
+import FootBar from '@/components/FootBar.vue'
 import Logo from '@/components/Logo.vue'
 import NavBar from '@/components/NavBar.vue'
 import SmallNav from '@/components/SmallNav.vue'
@@ -48,9 +57,15 @@ import SmallNav from '@/components/SmallNav.vue'
 export default {
   name: "layout",
   components: {
+    FootBar,
     Logo,
     NavBar,
     SmallNav
+  },
+  computed: {
+    footerEnabled() {
+      return this.$route.name == "home"
+    }
   }
 }
 </script>
@@ -169,32 +184,5 @@ export default {
     }
     width: 100%;
     //overflow: scroll;
-}
-
-.foot-bar {
-    height: $footerHeight;
-    width: 100%;
-    top: #{$headerHeight + $mainHeight};
-    padding-bottom: 2rem;
-
-    .mq-mobile &,
-    .mq-tablet & {
-        padding-bottom: 0.5rem;
-    }
-
-    position: fixed;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    &__text {
-        font-size: 1.2rem;
-        color: $colorBlack;
-    }
-
-    &__name {
-        color: $colorOrange;
-    }
 }
 </style>

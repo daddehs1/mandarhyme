@@ -68,8 +68,8 @@ export default {
           name: "defaultMatchTones",
           labels: {
             main: "Match Tones by Default",
-            left: "Yes",
-            right: "No"
+            left: "No",
+            right: "Yes"
           }
         }
       ]
