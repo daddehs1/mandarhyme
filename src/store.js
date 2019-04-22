@@ -14,20 +14,27 @@ export default new Vuex.Store({
     messageBoxes: {}
   },
   getters: {
-    // returns true if any in messageBoxes has true value
     settings: state => state.settings,
-    messageBoxOpen: state => Object.values(state.messageBoxes).reduce((acc, val) => acc || val, false),
-    messageBox: state => params => state.messageBoxes[params.id]
+    // returns true if any in messageBoxes has true value
+    messageBoxes: state => state.messageBoxes,
+    isAnyMessageBoxOpen: state => Object.values(state.messageBoxes).reduce((acc, val) => acc || val.open, false),
+    isMessageBoxOpen: state => params => state.messageBoxes[params.target].open,
+    isMessageBoxRegistered: state => params => state.messageBoxes.hasOwnProperty(params.target)
   },
   mutations: {
     registerMessageBox(state, payload) {
-      Vue.set(state.messageBoxes, payload.id, false)
+      Vue.set(state.messageBoxes, payload.target, {
+        open: false
+      })
     },
-    activateMessageBox(state, payload) {
-      Vue.set(state.messageBoxes, payload.id, true)
+    deregisterMessageBox(state, payload) {
+      Vue.delete(state.messageBoxes, payload.target)
     },
-    deactivateMessageBox(state, payload) {
-      Vue.set(state.messageBoxes, payload.id, false)
+    openMessageBox(state, payload) {
+      Vue.set(state.messageBoxes[payload.target], "open", true)
+    },
+    closeMessageBox(state, payload) {
+      Vue.set(state.messageBoxes[payload.target], "open", false)
     },
     updateSetting(state, payload) {
       Vue.set(state.settings, payload.settingName, payload.settingValue);
@@ -39,15 +46,20 @@ export default new Vuex.Store({
     }, payload) => {
       commit('registerMessageBox', payload);
     },
-    activateMessageBox: ({
+    deregisterMessageBox: ({
       commit
     }, payload) => {
-      commit('activateMessageBox', payload);
+      commit('deregisterMessageBox', payload);
     },
-    deactivateMessageBox: ({
+    openMessageBox: ({
       commit
     }, payload) => {
-      commit('deactivateMessageBox', payload);
+      commit('openMessageBox', payload);
+    },
+    closeMessageBox: ({
+      commit
+    }, payload) => {
+      commit('closeMessageBox', payload);
     },
     updateSetting: ({
       commit

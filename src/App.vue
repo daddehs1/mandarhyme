@@ -1,5 +1,5 @@
 <template>
-<div id="app" :class="classObject">
+<div id="app">
   <!-- <ios-safari-wrapper> -->
   <layout/>
   <!-- </ios-safari-wrapper> -->
@@ -18,16 +18,6 @@ export default {
   components: {
     Layout,
     IosSafariWrapper
-  },
-  computed: {
-    ...mapGetters(['messageBoxOpen']),
-    classObject() {
-      var classObject = {
-        'u-message-box-lock': this.messageBoxOpen,
-      }
-      classObject['mq-' + this.$mq] = true;
-      return classObject;
-    }
   }
 }
 </script>
@@ -38,11 +28,10 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-    height: 100%;
-    width: 100%;
-
-    &.u-message-box-lock {
-        overflow: hidden !important;
-    }
+    height: 100vh;
+    width: 100vw;
+    // &.u-message-box-lock {
+    //     overflow: hidden !important;
+    // }
 }
 </style>

@@ -79,10 +79,10 @@ export default {
     ...mapGetters(['settings'])
   },
   methods: {
-    ...mapActions(['deactivateMessageBox', 'updateSetting']),
+    ...mapActions(['closeMessageBox', 'updateSetting']),
     closeSettings() {
-      this.deactivateMessageBox({
-        id: 'settings'
+      this.closeMessageBox({
+        target: 'settings'
       });
     },
     update(e) {

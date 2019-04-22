@@ -6,33 +6,23 @@
       <span>Home</span>
     </li>
   </router-link>
-  <message-box id="about">
-    <template v-slot:trigger>
-        <li class="nav-bar__item">
-          <info-icon class="nav-bar__icon" />
-          <span>About</span>
-        </li>
-        </template>
-    <template v-slot:title>About</template>
-    <template v-slot:contents><about/></template>
-  </message-box>
-  <message-box id="settings">
-    <template v-slot:trigger>
-          <li class="nav-bar__item u-global-last-of-type">
-          <settings-icon class="nav-bar__icon" />
-          <span>Settings</span>
-          </li>
-        </template>
-    <template v-slot:title>Settings</template>
-    <template v-slot:contents><settings/></template>
-  </message-box>
+  <message-box-link mb-target="about">
+    <li class="nav-bar__item">
+      <info-icon class="nav-bar__icon" />
+      <span>About</span>
+    </li>
+  </message-box-link>
+  <message-box-link mb-target="settings">
+    <li class="nav-bar__item u-global-last-of-type">
+      <settings-icon class="nav-bar__icon" />
+      <span>Settings</span>
+    </li>
+  </message-box-link>
 </ul>
 </template>
 
 <script>
-import MessageBox from '@/components/MessageBox.vue'
-import Settings from '@/components/Settings.vue'
-import About from '@/components/About.vue'
+import MessageBoxLink from '@/components/MessageBoxLink.vue'
 
 import {
   HomeIcon,
@@ -43,9 +33,7 @@ import {
 export default {
   name: 'nav-bar',
   components: {
-    MessageBox,
-    Settings,
-    About,
+    MessageBoxLink,
     HomeIcon,
     InfoIcon,
     SettingsIcon,

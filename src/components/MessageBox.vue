@@ -1,15 +1,12 @@
 <template>
-<div @:keyup.up="deactivate" class="message-box" :class="classObject">
-  <div @click="activate" class="message-box__trigger">
-    <slot name="trigger"></slot>
-  </div>
-  <div @click="deactivate" class="message-box__wrapper">
+<div @:keyup.up="close" class="message-box" :class="classObject">
+  <div @click="close" class="message-box__wrapper">
   </div>
   <div class="message-box__contents">
     <span class="message-box__title">
       <slot name="title"></slot>
     </span>
-    <span @click="deactivate" class="message-box__exit">X</span>
+    <span @click="close" class="message-box__exit">X</span>
     <div class="message-box__message">
       <slot name="contents"></slot>
     </div>
@@ -25,50 +22,36 @@ import {
 
 export default {
   name: 'message-box',
-  props: ['id'],
+  props: ['mb-target'],
   data() {
     return {
       addEventListenerFunc: event => {
         if (this.active && event.keyCode === 13) {
-          this.deactivate()
+          this.close()
         }
       }
     }
   },
   methods: {
-    ...mapActions(['registerMessageBox', 'activateMessageBox', 'deactivateMessageBox']),
-    activate() {
-      this.activateMessageBox({
-        id: this.id
-      });
-    },
-    deactivate() {
-      this.deactivateMessageBox({
-        id: this.id
+    ...mapActions(['closeMessageBox', 'activateMessageBox', 'deactivateMessageBox']),
+    close() {
+      this.closeMessageBox({
+        target: this.mbTarget
       });
     }
   },
   computed: {
-    ...mapGetters(['messageBox']),
+    ...mapGetters(['isMessageBoxOpen']),
     classObject() {
       return {
-        "message-box--active": this.active
+        "message-box--active": this.isOpen
       };
     },
-    active() {
-      return this.messageBox({
-        id: this.id
+    isOpen() {
+      return this.isMessageBoxOpen({
+        target: this.mbTarget
       })
     }
-  },
-  created() {
-    // this.$store.dispatch('registerMessageBox', {
-    //   id: this.id
-    // });
-    // // register message box into store
-    this.registerMessageBox({
-      id: this.id
-    });
   },
   mounted() {
     // globally listen to enter key in order to exit out of message box
@@ -83,7 +66,6 @@ export default {
 
 <style lang="scss">
 .message-box {
-
     &__wrapper {
         position: fixed;
         width: 0;
@@ -134,6 +116,8 @@ export default {
     }
 
     &__exit {
+        font-size: 1.6rem;
+        color: $colorDarkOrange;
         position: absolute;
         top: 1rem;
         right: 2rem;
