@@ -63,7 +63,13 @@ export default {
       }
     },
     rhymeList() {
-      return this.rhymeData ? this.rhymeData.rhymes : []
+      return this.rhymeData ? this.rhymeData.rhymes : [{
+        simplified: "...",
+        traditional: "...",
+        pinyin: "loading rhymes",
+        zhuyinArray: ['loading rhymes'],
+        definitions: ["Please wait a moment!"]
+      }]
     },
     sortedRhymeList() {
       var alphabetSort = (a, b) => {
