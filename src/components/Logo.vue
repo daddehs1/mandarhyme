@@ -22,8 +22,8 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    border: 2px solid #113A5B;
-    border-right-color: #E38484;
+    border: 2px solid $colorDarkBlue;
+    border-right-color: $colorOrange;
     border-radius: 5px;
     padding: 2px;
     overflow: hidden;
@@ -37,10 +37,10 @@ export default {
         font-weight: 300;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: #113A5B;
+        color: $colorDarkBlue;
 
         &--orange {
-            color: #E38484;
+            color: $colorOrange;
         }
     }
 }
