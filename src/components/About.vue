@@ -5,7 +5,9 @@
       What It Is
       </template>
     <template v-slot:content>
-        MandaRhyme is a rhyming dictionary for Mandarin Chinese. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, reprehenderit officia culpa, nostrum pariatur quaerat. Impedit quidem illum quam quisquam placeat consequatur assumenda dolorum necessitatibus, facere minima sit debitis amet.
+        <p><span class="u-emphasis">MandaRhyme</span> is a rhyming dictionary for Mandarin Chinese.</p>
+        <p>Enter a search phrase and find a list of words that rhyme!</p>
+        <p>All words and definitions are derived from the <a href="https://cc-cedict.org/wiki/" class="u-nowrap">CC-CEDICT</a> Chinese-English dictionary.</p>
       </template>
   </info-group>
   <info-group>
@@ -13,7 +15,9 @@
         How it Works
       </template>
     <template v-slot:content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi eos suscipit voluptate maiores deserunt fugiat ipsam optio, totam aperiam? Incidunt quis eveniet distinctio, dolor voluptatem eos consectetur molestias molestiae quas.
+        <p>As in any language, rhymes in Mandarin Chinese are determined by vowel sounds.</p>
+        <p>Two words are considered to rhyme if the vowel sound <span class="u-info-aside">(i.e. final)</span> is the same.</p>
+        <p>Multi-syllable words <span class="u-info-aside">(words with more than one character)</span>, are considered to rhyme if each corresponding syllabe rhymes.</p>
       </template>
   </info-group>
   <info-group>
@@ -21,7 +25,9 @@
         Want to Help?
       </template>
     <template v-slot:content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ab soluta dolorum ad, itaque quidem numquam vero, expedita, aliquam ducimus nam aliquid possimus doloremque ex dolores, quaerat mollitia amet facilis.
+          <p><span class="u-emphasis">MandaRhyme</span> is open-source and contributions are always welcome!</p>
+          <p>Visit the <a href="https://github.com/daddehs1/mandarhyme" class="u-nowrap">MandaRhyme github</a> to view the source code and any listed issues.</p>
+          <p>Also check out the <a href="https://github.com/daddehs1/mandarin-rhymes" class="u-nowrap">Mandarin-Rhymes github</a> for the companion node module.</p>
       </template>
   </info-group>
 </info-container>
