@@ -29,8 +29,6 @@ export default {
         color: $colorBlack;
     }
 
-    &__name {
-        color: $colorOrange;
-    }
+    &__name {}
 }
 </style>
