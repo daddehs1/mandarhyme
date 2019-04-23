@@ -1,9 +1,6 @@
 <template>
 <info-container>
   <info-group>
-    <!-- <template v-slot:label>
-        How it Works
-      </template> -->
     <template v-slot:content>
         <p><span class="u-emphasis">Tone Matching</span> adds an additional layer of "rhyming" on top of rhyming by vowel sound.</p>
         <p>If enabled, search results will only return words that rhyme and have the same sequence of tones as the search phrase.</p>

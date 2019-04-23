@@ -1,7 +1,13 @@
 <template>
 <div class="search" :class="getClassObject">
+
+  <!-- container for error message text if input fails validation -->
   <div class="search__error">{{this.errorMessage}}</div>
+
+  <!-- input which holds search search query
+  validates on every input -->
   <input @input="validate" v-model="searchQuery" type="text" class="search__input" name="search-query" />
+  <!-- question mark search icon -->
   <search-icon class="search__icon"></search-icon>
 </div>
 </template>
@@ -17,12 +23,22 @@ export default {
   },
   data() {
     return {
+      // search query v-modeled to input
       searchQuery: "",
+
+      // whether or not the input has failed most recent validation
       hasError: false,
+      // error message to be displayed in error container
       errorMessage: ""
     }
   },
   methods: {
+    /**
+     * [method used to validate search query with following rules:
+          1. Must contain at least 1 character
+          2. Must only contain Chinese characters (hanzi)]
+     * @return {[boolean]}      [whether validation has passed]
+     */
     validate() {
       //var hanziRegex = /^(\p{Script=Hani})+$/gu;
       var hanziRegex = /^[\u4e00-\u9fa5]+$/
@@ -40,8 +56,10 @@ export default {
     }
   },
   computed: {
+    // helper to bind class to component root
     getClassObject() {
       return {
+        // modifier class to signify input has error
         "search--error": this.hasError
       }
     }
@@ -65,12 +83,15 @@ export default {
     &__icon {
         color: $colorGrey;
         position: absolute;
+        // used to center icon
+        // 12px refers to half of the icon height
         top: calc(50% - 12px + 1.5rem);
         right: 1rem;
         transition: 0.3s all ease;
     }
 
     &__input {
+        // unfo default appearance
         -webkit-appearance: none;
         height: 4rem;
         width: 100%;
@@ -93,6 +114,7 @@ export default {
         }
     }
 
+    // if input has error
     &--error {
         .search {
             &__error {

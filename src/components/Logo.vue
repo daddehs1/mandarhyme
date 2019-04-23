@@ -1,3 +1,4 @@
+<!-- Logo created with CSS -->
 <template>
 <div class="logo">
   <div class="logo__cell logo__cell--orange">M</div>
@@ -30,6 +31,7 @@ export default {
 
     &__cell {
         // makes the text vertically centered
+        // 4px is reference to the 2 * 2px border
         font-size: 3vh;
         line-height: calc(4vh - 4px);
         height: calc(4vh - 4px);

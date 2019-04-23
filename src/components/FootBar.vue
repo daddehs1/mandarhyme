@@ -1,6 +1,8 @@
 <template>
 <div class="foot-bar">
-  <span class="foot-bar__text">Made by <span class="foot-bar__name"><a target="_blank" href="https://github.com/daddehs1">daddehs1</a></span></span>
+  <span class="foot-bar__text">Made by
+    <span class="foot-bar__name"><a target="_blank" href="https://github.com/daddehs1">daddehs1</a></span>
+  </span>
 </div>
 </template>
 
@@ -20,15 +22,10 @@ export default {
 
     position: fixed;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 
     &__text {
         font-size: 1.2rem;
         color: $colorBlack;
     }
-
-    &__name {}
 }
 </style>

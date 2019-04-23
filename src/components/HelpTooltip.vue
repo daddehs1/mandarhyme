@@ -15,6 +15,7 @@ import {
 
 export default {
   name: 'help-tooltip',
+  // mb-target refers to the message-box target for this tooltip
   props: ["mb-target"],
   components: {
     MessageBoxLink,

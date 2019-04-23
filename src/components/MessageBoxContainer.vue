@@ -1,9 +1,14 @@
 <template>
 <div>
+  <!-- render list of message boxes from component data -->
   <template v-for="mb in messageBoxesData">
-    <message-box :mb-target="mb.target">
+    <!-- only render message box if it is currently registered
+    message box is registered iff a corresponding
+    message-box-link is currently mounted with the same target -->
+    <message-box :mb-target="mb.target" v-if="isMessageBoxRegistered({target: mb.target})">
         <template v-slot:title>{{mb.title}}</template>
   <template v-slot:contents>
+    <!-- dynamically render component associated with this message box as the contents -->
       <component :is="mb.componentName"></component>
     </template>
   </message-box>
@@ -32,6 +37,7 @@ export default {
   },
   data() {
     return {
+      // array of information about message boxes
       messageBoxesData: [{
           target: "about",
           title: "About",

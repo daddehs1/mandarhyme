@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
 import Search from '@/components/Search.vue'
 import Button from '@/components/Button.vue'
 import SwitchBox from '@/components/SwitchBox.vue'
@@ -35,7 +34,6 @@ import {
 export default {
   name: 'home',
   components: {
-    HelloWorld,
     Search,
     Button,
     SwitchBox,

@@ -1,8 +1,11 @@
 <template>
 <div class="info-group">
+  <!-- slot for the label which will title the info group -->
   <span class="info-group__label" v-if="hasLabel">
     <slot name="label" />
   </span>
+
+  <!-- slot for the content that will go inside of the message group under the label-->
   <div class="info-group__content">
     <slot name="content" />
   </div>
@@ -14,6 +17,7 @@ export default {
   name: 'info-group',
   computed: {
     hasLabel() {
+      // returns true if label is being used (i.e. slot is filled)
       return this.$slots.hasOwnProperty("label")
     }
   }

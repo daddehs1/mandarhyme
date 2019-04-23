@@ -12,12 +12,12 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-
+    // style button full-width for mobile
     .mq-mobile & {
         width: 100%;
     }
 
-    // undo default button
+    // remove default button styles
     border: 0;
     font: inherit;
     color: inherit;
@@ -29,10 +29,6 @@ export default {
     width: 10rem;
     height: 4rem;
     background-color: $colorDarkOrange;
-
-    // &:active {
-    //     background-color: $colorOrange;
-    // }
 
     &__text {
         user-select: none;

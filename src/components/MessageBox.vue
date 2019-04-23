@@ -1,13 +1,17 @@
 <template>
-<div @:keyup.up="close" class="message-box" :class="classObject">
+<div class="message-box" :class="classObject">
+  <!-- close message box if clicking outside of contents -->
   <div @click="close" class="message-box__wrapper">
   </div>
   <div class="message-box__contents">
     <span class="message-box__title">
+      <!-- slot for the title of the message box, displayed at the top -->
       <slot name="title"></slot>
     </span>
+    <!-- "X" to close the message box, displayed at the top right -->
     <span @click="close" class="message-box__exit">X</span>
     <div class="message-box__message">
+      <!-- slot for the content of the message box, displayed under the title -->
       <slot name="contents"></slot>
     </div>
   </div>
@@ -22,18 +26,28 @@ import {
 
 export default {
   name: 'message-box',
+  // mb-target refers to the message-box target
+  // is used to communicate with store
   props: ['mb-target'],
-  data() {
-    return {
-      addEventListenerFunc: event => {
-        if (this.active && event.keyCode === 13) {
-          this.close()
-        }
-      }
-    }
-  },
+
   methods: {
+    // actions mapped from the store
     ...mapActions(['closeMessageBox', 'activateMessageBox', 'deactivateMessageBox']),
+
+    /**
+     * [helper function to attach a keypress listener to the window for closing on enter press]
+     * @param  {[Event Object]} event The Event Object associated with the keypress
+     */
+    addEventListenerFunc(event) {
+      // if this message box is open AND the key pressed is "enter"
+      if (this.isOpen && event.keyCode === 13) {
+        this.close();
+      }
+    },
+
+    /**
+     * [communicate with store to close this message box]
+     */
     close() {
       this.closeMessageBox({
         target: this.mbTarget
@@ -41,12 +55,18 @@ export default {
     }
   },
   computed: {
+    // getters mapped from store
     ...mapGetters(['isMessageBoxOpen']),
+
+    // helper to bind class to component root
     classObject() {
       return {
+        // modifier class to signify message box is open
         "message-box--active": this.isOpen
       };
     },
+
+    // communicates with store to determine whether this message box is open
     isOpen() {
       return this.isMessageBoxOpen({
         target: this.mbTarget
@@ -55,7 +75,7 @@ export default {
   },
   mounted() {
     // globally listen to enter key in order to exit out of message box
-    // use named function variable to be able to match in case of multiple listeners
+    // use named method to be able to match in case of multiple listeners
     window.addEventListener('keyup', this.addEventListenerFunc);
   },
   destroyed() {

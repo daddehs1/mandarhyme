@@ -1,4 +1,5 @@
 <template>
+<!-- open message box when link is clicked -->
 <div @click="open" class="message-box-link">
   <slot></slot>
 </div>
@@ -14,6 +15,8 @@ export default {
   props: ["mb-target"],
   methods: {
     ...mapActions(['registerMessageBox', 'deregisterMessageBox', 'openMessageBox']),
+
+    // communicate with store to open this message box
     open() {
       this.openMessageBox({
         target: this.mbTarget

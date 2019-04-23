@@ -1,8 +1,6 @@
 <template>
 <div id="app">
-  <!-- <ios-safari-wrapper> -->
   <layout/>
-  <!-- </ios-safari-wrapper> -->
 </div>
 </template>
 
@@ -12,12 +10,10 @@ import {
 } from 'vuex'
 
 import Layout from '@/components/Layout.vue'
-import IosSafariWrapper from '@/components/IosSafariWrapper.vue'
 
 export default {
   components: {
-    Layout,
-    IosSafariWrapper
+    Layout
   }
 }
 </script>

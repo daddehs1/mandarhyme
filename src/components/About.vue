@@ -42,9 +42,6 @@ export default {
   components: {
     InfoContainer,
     InfoGroup
-  },
-  data() {
-    return {}
   }
 }
 </script>
