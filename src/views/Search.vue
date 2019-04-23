@@ -101,6 +101,7 @@ export default {
 
   },
   created() {
+    window.scrollTo(0, 0);
     var searchQuery = this.$route.query.q;
     var matchTones = this.$route.query.t;
     axios.get('https://mandarhyme-api.herokuapp.com/api/search', {

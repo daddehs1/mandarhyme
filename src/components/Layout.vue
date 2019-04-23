@@ -100,11 +100,6 @@ export default {
       return this.$route.name == "home"
     }
   },
-  watch: {
-    hasScrolled(newValue, oldValue) {
-      console.log(newValue)
-    }
-  },
   created() {
     window.addEventListener('scroll', this.updateMainScroll);
   },
