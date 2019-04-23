@@ -15,6 +15,7 @@
 import MessageBox from '@/components/MessageBox.vue'
 import Settings from '@/components/Settings.vue'
 import About from '@/components/About.vue'
+import MatchTonesHelp from '@/components/MatchTonesHelp.vue'
 
 import {
   mapGetters
@@ -26,7 +27,8 @@ export default {
   components: {
     MessageBox,
     Settings,
-    About
+    About,
+    MatchTonesHelp
   },
   data() {
     return {
@@ -39,6 +41,11 @@ export default {
           target: "settings",
           title: "Settings",
           componentName: "settings"
+        },
+        {
+          target: "matchTonesHelp",
+          title: "Tone Matching",
+          componentName: "match-tones-help"
         }
       ]
     }

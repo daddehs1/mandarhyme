@@ -26,7 +26,7 @@ export default {
       target: this.mbTarget
     });
   },
-  beforeDestroy() {
+  destroyed() {
     // deregister message box from store
     this.deregisterMessageBox({
       target: this.mbTarget

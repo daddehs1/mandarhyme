@@ -1,6 +1,6 @@
 <template>
 <div class="info-group">
-  <span class="info-group__label">
+  <span class="info-group__label" v-if="hasLabel">
     <slot name="label" />
   </span>
   <div class="info-group__content">
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: 'info-group'
+  name: 'info-group',
+  computed: {
+    hasLabel() {
+      return this.$slots.hasOwnProperty("label")
+    }
+  }
 }
 </script>
 
@@ -30,6 +35,14 @@ export default {
         font-size: 1.6rem;
         margin-bottom: 0.75rem;
         color: $colorDarkBlue;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    p:not(:first-of-type) {
+        margin-top: 1rem;
     }
 }
 </style>

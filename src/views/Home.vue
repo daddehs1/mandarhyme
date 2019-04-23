@@ -11,7 +11,7 @@
       <div class="search-box__options">
         <label class="search-box__label">Match Tones: </label>
         <switch-box :value="this.settings.defaultMatchTones" name="match-tones" />
-        <!-- <help-tooltip class="search-box__tone-help" /> -->
+        <help-tooltip mb-target="matchTonesHelp" class="search-box__tone-help" />
       </div>
       <div class="search-box__submit">
         <Button label="Search" />
@@ -128,7 +128,6 @@ export default {
         // margin-right: 1rem;
         margin: 1rem 1rem 2vh;
         display: flex;
-        align-items: center;
         justify-content: flex-end;
     }
 

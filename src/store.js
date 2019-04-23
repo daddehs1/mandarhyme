@@ -18,7 +18,7 @@ export default new Vuex.Store({
     // returns true if any in messageBoxes has true value
     messageBoxes: state => state.messageBoxes,
     isAnyMessageBoxOpen: state => Object.values(state.messageBoxes).reduce((acc, val) => acc || val.open, false),
-    isMessageBoxOpen: state => params => state.messageBoxes[params.target].open,
+    isMessageBoxOpen: state => params => state.messageBoxes.hasOwnProperty(params.target) && state.messageBoxes[params.target].open,
     isMessageBoxRegistered: state => params => state.messageBoxes.hasOwnProperty(params.target)
   },
   mutations: {

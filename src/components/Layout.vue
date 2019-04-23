@@ -1,24 +1,9 @@
 <template>
 <div class="layout" :class="classObject">
-
   <!-- MAIN CONTENT -->
   <div class="main-wrapper">
     <router-view/>
   </div>
-
-  <!-- FOOTER -->
-  <!-- if home page, will always display footer
-  else display only if large screen -->
-  <template v-if="footerEnabled">
-    <foot-bar/>
-  </template>
-
-  <template v-else>
-    <mq-layout mq="laptop+">
-      <foot-bar/>
-    </mq-layout>
-  </template>
-
 
   <!-- HEADER -->
   <div class="header-bar">
@@ -46,6 +31,20 @@
   </div>
 
   <message-box-container/>
+
+
+  <!-- FOOTER -->
+  <!-- if home page, will always display footer
+    else display only if large screen -->
+  <template v-if="footerEnabled">
+      <foot-bar/>
+    </template>
+
+  <template v-else>
+      <mq-layout mq="laptop+">
+        <foot-bar/>
+      </mq-layout>
+    </template>
 </div>
 </template>
 

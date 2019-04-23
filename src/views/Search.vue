@@ -66,7 +66,6 @@ export default {
       return this.rhymeData ? this.rhymeData.rhymes : []
     },
     sortedRhymeList() {
-      console.log("Here i here i sort")
       var alphabetSort = (a, b) => {
         // removes diacritic to find true alphabetic order by pinyin
         // NDF decomposes graphemes, e.g. 'è'' turns into 'e  ̀'

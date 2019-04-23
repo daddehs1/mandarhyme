@@ -12,9 +12,9 @@ export default {
 
 <style lang="scss">
 .foot-bar {
-    height: $footerHeight;
+    //height: $footerHeight;
     width: 100%;
-    top: #{$headerHeight + $mainHeight};
+    bottom: #{$headerHeight + $mainHeight};
     padding-bottom: 2rem;
 
     position: fixed;
