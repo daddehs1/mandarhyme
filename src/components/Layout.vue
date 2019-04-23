@@ -1,7 +1,7 @@
 <template>
 <div class="layout" :class="classObject">
   <!-- MAIN CONTENT -->
-  <div class="main-wrapper">
+  <div class="main-wrapper" ref="main">
     <router-view/>
   </div>
 
@@ -21,9 +21,11 @@
         </div>
       </mq-layout>
     </div>
-    <mq-layout mq="laptop+" class="nav-bar-mqw-laptop-p">
-      <nav-bar />
-    </mq-layout>
+    <div class="header-bar__bar">
+      <mq-layout mq="laptop+">
+        <nav-bar />
+      </mq-layout>
+    </div>
 
     <mq-layout :mq="['tablet', 'mobile']">
       <small-nav/>
@@ -62,6 +64,11 @@ import MessageBoxContainer from '@/components/MessageBoxContainer.vue'
 
 export default {
   name: "layout",
+  data() {
+    return {
+      hasScrolled: false
+    }
+  },
   components: {
     FootBar,
     Logo,
@@ -69,11 +76,22 @@ export default {
     SmallNav,
     MessageBoxContainer
   },
+  methods: {
+    updateMainScroll(e) {
+      var element = this.$refs.main;
+      // give threshold so doesn't trigger immediately
+      const SCROLL_THRESHOLD = 50;
+      var scrollAmount = e.srcElement.scrollingElement.scrollTop;
+      this.hasScrolled = scrollAmount > SCROLL_THRESHOLD;
+    }
+  },
   computed: {
     ...mapGetters(['isAnyMessageBoxOpen']),
     classObject() {
       var classObject = {
         'u-message-box-lock': this.isAnyMessageBoxOpen,
+        'u-has-scrolled': this.hasScrolled,
+        'u-can-shrink': this.$route.name != "home"
       }
       classObject['mq-' + this.$mq] = true;
       return classObject;
@@ -81,6 +99,17 @@ export default {
     footerEnabled() {
       return this.$route.name == "home"
     }
+  },
+  watch: {
+    hasScrolled(newValue, oldValue) {
+      console.log(newValue)
+    }
+  },
+  created() {
+    window.addEventListener('scroll', this.updateMainScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.updateMainScroll);
   }
 }
 </script>
@@ -133,6 +162,29 @@ export default {
         border-bottom-width: 2px;
     }
 
+    transition: $navShrinkTime all ease-in-out;
+    .u-has-scrolled.mq-mobile.u-can-shrink & {
+        height: calc(#{$headerHeight} / 2);
+
+        &__text-box {
+            font-size: 2.5vh;
+        }
+
+        &__logo-box {
+            //transform: scale(.5);
+            height: 4vh;
+            width: calc(4vh + 2px);
+            overflow: hidden;
+            margin-left: 1rem;
+            margin-right: 1rem;
+
+            .logo {
+                //border-color: $colorDarkBlue;
+                padding: 1px;
+            }
+        }
+    }
+
     width: 100vw;
     height: $headerHeight;
     background-color: $colorWhite;
@@ -154,6 +206,8 @@ export default {
         margin-right: 2rem;
         //font-size: 2.6rem;
         font-size: 4vh;
+
+        transition: $navShrinkTime all ease-in-out;
     }
 
     &__text {
@@ -180,6 +234,16 @@ export default {
         margin-right: 2rem;
         height: 8vh;
         width: 8vh;
+        transition: $navShrinkTime all ease-in-out;
+    }
+
+    &__bar {
+        .mq-desktop &,
+        .mq-laptop & {
+            // pushes element to the right-most edge
+            margin-left: auto !important;
+            margin-right: 2rem !important;
+        }
     }
 }
 

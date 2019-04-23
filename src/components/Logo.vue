@@ -26,6 +26,7 @@ export default {
     border-right-color: #E38484;
     border-radius: 5px;
     padding: 2px;
+    overflow: hidden;
 
     &__cell {
         // makes the text vertically centered

@@ -10,7 +10,7 @@
       <router-link class="search-results__reset" :to="{ name: 'home'}"><span>search again</span></router-link>
     </mq-layout>
   </div>
-  <ul @scroll="updateScrollRemaining" ref="rhymeList" class="rhyme-list">
+  <ul @scroll="updateScroll" ref="rhymeList" class="rhyme-list">
     <li v-for="rhyme in this.sortedRhymeList" class="rhyme-list__item">
       <h4 class="rhyme-list__word">{{characters(rhyme)}}</h4>
       <span class="rhyme-list__pronunciation">{{pronunciation(rhyme)}}</span>
@@ -48,12 +48,12 @@ export default {
     pronunciation(rhyme) {
       return this.settings.pronunciationSet ? rhyme.zhuyinArray.join(" ") : rhyme.pinyin;
     },
-    updateScrollRemaining() {
+    updateScroll() {
       var element = this.$refs.rhymeList;
       // give tolerance so it doesn't have to be exactly at end
       const SCROLL_REMAIN_TOLERANCE = 5;
       this.scrollRemaining = element.scrollHeight - element.scrollTop - element.clientHeight > SCROLL_REMAIN_TOLERANCE;
-    },
+    }
   },
   computed: {
     ...mapGetters(['settings']),
@@ -112,8 +112,8 @@ export default {
           definitions: ["no rhyming words found!"]
         }]
       };
-      // after rendering rhymeList, updateScrollRemaining
-      this.$nextTick(this.updateScrollRemaining)
+      // after rendering rhymeList, call updateScroll
+      this.$nextTick(this.updateScroll)
     });
   },
   components: {}

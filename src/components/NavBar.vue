@@ -43,11 +43,6 @@ export default {
 
 <style lang="scss">
 .nav-bar {
-    &-mqw-laptop-p {
-        // pushes element to the right-most edge
-        margin-left: auto !important;
-        margin-right: 2rem !important;
-    }
 
     //margin-right: 3rem;
     color: $colorDarkOrange;

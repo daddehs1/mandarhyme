@@ -4,8 +4,9 @@
     <plus-circle-icon/>
   </div>
   <div class="small-nav__nav-wrapper">
-    <div class="small-nav__background"></div>
-    <nav-bar/>
+    <div class="small-nav__background">
+      <nav-bar/>
+    </div>
   </div>
 </div>
 </template>
@@ -44,7 +45,6 @@ export default {
 
 <style lang="scss">
 .small-nav {
-
     .u-message-box-lock &__icon {
         display: none;
     }
@@ -54,31 +54,40 @@ export default {
         top: 1rem;
         right: 1rem;
         color: $colorDarkOrange;
-        transition: transform 0.5s ease;
         z-index: 2;
+        transition: 0.3s transform;
     }
 
     &__background,
     &__nav-wrapper {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
-        width: 0;
         background-color: $colorWhite;
+
         height: calc(#{$headerHeight} - 3px);
+        width: 100vw;
+
+        .u-has-scrolled.mq-mobile.u-can-shrink & {
+            height: calc((#{$headerHeight} / 2) - 3px);
+        }
     }
 
     &__background {
-        transition: width 0.2s ease;
-        z-index: -1;
+        width: 100vw;
+        z-index: 1;
+        display: flex;
+        justify-content: space-evenly;
+        transition: height $navShrinkTime ease-in-out;
+        padding-right: 2rem;
     }
 
     &__nav-wrapper {
-        display: flex;
-        justify-content: space-evenly;
-        overflow: hidden;
+        width: 0;
+        left: 0;
         z-index: 1;
-        transition: width 0.5s ease;
+        overflow: hidden;
+        transition: height $navShrinkTime ease-in-out, width $navShrinkTime ease-in-out;
     }
 
     $this: &;
@@ -89,13 +98,8 @@ export default {
                 transform-origin: center;
             }
 
-            &__background {
-                transition: width 0.2s ease 0.3s;
-            }
-
-            &__background,
             &__nav-wrapper {
-                width: 100%;
+                width: 100vw;
             }
         }
     }
