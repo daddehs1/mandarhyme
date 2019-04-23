@@ -1,6 +1,6 @@
 <template>
 <div class="foot-bar">
-  <span class="foot-bar__text">Made by <span class="foot-bar__name">@daddehs1</span></span>
+  <span class="foot-bar__text">Made by <span class="foot-bar__name"><a target="_blank" href="https://github.com/daddehs1">daddehs1</a></span></span>
 </div>
 </template>
 
@@ -12,9 +12,10 @@ export default {
 
 <style lang="scss">
 .foot-bar {
-    //height: $footerHeight;
+    height: $footerHeight;
     width: 100%;
-    bottom: #{$headerHeight + $mainHeight};
+    //top: #{$headerHeight + $mainHeight};
+    bottom: 0;
     padding-bottom: 2rem;
 
     position: fixed;
