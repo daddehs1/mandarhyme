@@ -1,9 +1,13 @@
 <template>
 <div class="small-nav" :class="classObject">
+  <!-- link to turn on navigation bar -->
   <div @click="toggleNav" class="small-nav__icon">
+    <!-- + icon rotates to x when activated -->
     <plus-circle-icon/>
   </div>
+  <!-- wrapper which grows to reveal background when on -->
   <div class="small-nav__nav-wrapper">
+    <!-- white background against which nav bar is centered -->
     <div class="small-nav__background">
       <nav-bar/>
     </div>
@@ -25,13 +29,16 @@ export default {
     }
   },
   methods: {
+    // toggle navigation bar between on and off
     toggleNav() {
       this.navOn = !this.navOn
     }
   },
   computed: {
+    // helper to bind class to component root
     classObject() {
       return {
+        // modifier class to signify navigation is currently on
         'small-nav--enabled': this.navOn
       }
     }

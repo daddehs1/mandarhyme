@@ -1,5 +1,5 @@
 <template>
-<div class="search" :class="getClassObject">
+<div class="search" :class="classObject">
 
   <!-- container for error message text if input fails validation -->
   <div class="search__error">{{this.errorMessage}}</div>
@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     // helper to bind class to component root
-    getClassObject() {
+    classObject() {
       return {
         // modifier class to signify input has error
         "search--error": this.hasError

@@ -1,10 +1,13 @@
 <template>
 <div class="switch" :class="classObject">
+  <!-- dummy checkbox that is used to toggle switch on/off -->
   <input :checked="inputVal" :name="this.name" :id="this.name + '-target'" class="switch__dummy" type="checkbox" />
+  <!-- label for off state -->
   <label class="switch__label switch__label--left">
     <slot name="label-left"></slot>
   </label>
   <label :for="this.name + '-target'" class="switch__checkbox"></label>
+  <!-- // label for on state -->
   <label class="switch__label switch__label--right">
     <slot name="label-right"></slot>
   </label>
@@ -19,25 +22,18 @@ export default {
     double: Boolean,
     value: Boolean
   },
-  data() {
-    return {
-      //inputVal: this.value
-    }
-  },
-  methods: {},
   computed: {
     inputVal() {
       return this.value;
     },
+    // helper to bind class to component root
     classObject() {
       return {
+        // modifier class to signify switch has two active values
+        //   (as opposed to "on" and "off")
+        // keeps switch from graying out in the "off" state
         "switch--double": this.double
       }
-    }
-  },
-  watch: {
-    inputVal(val) {
-      this.$emit('input', val);
     }
   }
 }
