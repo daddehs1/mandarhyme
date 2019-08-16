@@ -5,5 +5,8 @@ module.exports = {
       preProcessor: 'scss',
       patterns: ['./src/sass/global.scss']
     }
+  },
+  devServer: {
+    proxy: 'http://localhost:5000',
   }
 }

@@ -25,7 +25,6 @@ export default {
     return {
       // search query v-modeled to input
       searchQuery: "",
-
       // whether or not the input has failed most recent validation
       hasError: false,
       // error message to be displayed in error container

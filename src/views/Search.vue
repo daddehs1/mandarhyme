@@ -131,7 +131,7 @@ export default {
     // fetch data from api with query and options
     var searchQuery = this.$route.query.q;
     var matchTones = this.$route.query.t;
-    axios.get('https://api.mandarhyme.com/search', {
+    axios.get('/api/search', {
       params: {
         q: searchQuery,
         t: matchTones

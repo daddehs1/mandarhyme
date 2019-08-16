@@ -112,7 +112,7 @@ export default {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         z-index: 2000;
-        border: 0 solid $colorDarkBlue;
+        border: 0 solid darkblue;
         opacity: 0;
         background-color: $colorWhite;
         overflow: hidden;
